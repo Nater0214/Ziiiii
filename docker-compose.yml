@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  bot:
+    build:
+      context: Bot
+    image: docker.nater0214.com/ziiiii-bot:latest
