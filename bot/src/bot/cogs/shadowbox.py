@@ -16,7 +16,7 @@ class Shadowbox(Cog):
     """Shadowbox commands"""
     
     # Command group
-    command_group = SlashCommandGroup("shadowbox", "Commands for shadowboxing", guild_ids=[getenv("GUILD_ID")], guild_only=True)
+    command_group = SlashCommandGroup("shadowbox", "Commands for shadowboxing", guild_only=True)
     
     
     # Views

@@ -57,7 +57,7 @@ class SearchSong:
             elem.click()
             
             # Get the download button
-            download_button = self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div[2]/div[2]/table/tbody/tr/td[1]/div/div/div[1]/a[1]")
+            download_button = self.driver.find_element(By.XPATH, "/html/body/div/div[3]/div[2]/div[2]/table/tbody/tr/td[1]/div/div/div[1]/a[1]")
             
             # Return the song link
             download_links.append(download_button.get_attribute('href'))

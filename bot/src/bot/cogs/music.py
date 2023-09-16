@@ -7,7 +7,6 @@ import os
 
 from discord import ApplicationContext, ButtonStyle, FFmpegPCMAudio, HTTPException, Interaction, Option, SlashCommandGroup, ui
 from discord.ext.commands import Cog
-
 from src import audio
 
 
@@ -16,7 +15,7 @@ class Music(Cog):
     """Music commands"""
     
     # Command group
-    command_group = SlashCommandGroup("music", "Music commands", guild_ids=[os.getenv("GUILD_ID")])
+    command_group = SlashCommandGroup("music", "Music commands", guild_only=True)
     
     
     # Views

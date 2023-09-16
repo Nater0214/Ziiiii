@@ -3,11 +3,9 @@
 
 
 # Imports
-import os
 from os import environ
-import asyncio
 
-from discord import Activity, ActivityType, FFmpegPCMAudio, Intents, Member, VoiceState
+from discord import Activity, ActivityType, Intents, Member, VoiceState
 from discord.ext import commands
 
 
@@ -17,9 +15,8 @@ def run() -> None:
     
     # Set bot intents
     intents = Intents.default()
-    intents.typing = False
+    intents.members = True
     intents.message_content = True
-    intents.presences = False
     
     # Create bot
     bot = commands.Bot(intents=intents, help_command=None)
@@ -33,11 +30,6 @@ def run() -> None:
             if after.channel is None:
                 if before.channel.members is None:
                     await member.guild.voice_client.disconnect()
-    
-    # Add member join event
-    @bot.event
-    async def on_member_join(member: Member) -> None:
-        await member.add_roles(member.guild.get_role(861297983320227850))
     
     # Add cogs
     bot.load_extension("src.bot.cogs")

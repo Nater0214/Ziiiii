@@ -13,5 +13,5 @@ from .shadowbox import Shadowbox
 def setup(bot):
     bot.add_cog(General(bot))
     bot.add_cog(Music(bot))
-    bot.add_cog(Minecraft(bot))
+    # bot.add_cog(Minecraft(bot))
     bot.add_cog(Shadowbox(bot))
