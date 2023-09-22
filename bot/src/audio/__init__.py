@@ -1,4 +1,4 @@
-# lib/audio/__init__.py
+# src/audio/__init__.py
 # For importing purposes
 
 
