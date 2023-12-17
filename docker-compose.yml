@@ -2,6 +2,17 @@ version: '3'
 
 services:
   bot:
-    build:
-      context: Bot
     image: docker.nater0214.com/ziiiii-bot:latest
+    build:
+      context: bot
+    depends_on:
+      - api-nginx
+  
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+
+volumes:
+  pgdata:
