@@ -19,7 +19,7 @@ class General(commands.Cog):
     async def hello(self, ctx: ApplicationContext):
         """Send a friendly greeting"""
         
-        await ctx.response.send_message(choice(["Howdy {}!", "Hello {}!", "Greetings {}!"]).format(ctx.user.display_name))
+        await ctx.response.send_message(f"{choice('Hi', 'Hello', 'Hey', 'Howdy', 'Greetings')} {ctx.user.display_name}")
     
     
     @commands.slash_command(help="Tells where the bot is (where the command is executed)")
@@ -27,7 +27,7 @@ class General(commands.Cog):
         """Respond where the bot currently is"""
         
         if ctx.guild is not None:
-            if ctx.guild.id == int(getenv("ZIIIII_GUILD_ID")):
+            if ctx.guild.id == int(getenv("HOME_GUILD_ID")):
                 await ctx.response.send_message(f"I am at home in the {ctx.channel.name} channel.")
             else:
                 await ctx.response.send_message(f"I am in a server named {ctx.guild.name} in the {ctx.channel.name} channel.")

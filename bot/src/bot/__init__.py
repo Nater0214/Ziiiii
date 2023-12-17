@@ -20,7 +20,7 @@ def run() -> None:
     
     # Create bot
     bot = commands.Bot(intents=intents, help_command=None)
-    bot.activity = Activity(type=ActivityType.watching, name="Backflipblox")
+    bot.activity = Activity(type=ActivityType.watching, name="for your commands")
     
     # Add voice event
     @bot.event

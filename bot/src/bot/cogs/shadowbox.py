@@ -32,7 +32,7 @@ class Shadowbox(Cog):
         }
         
         # Init
-        def __init__(self, challenger: Member, bot: Member):
+        def __init__(self, challenger: Member, bot: Member) -> None:
             """Init"""
             
             # Run super init
@@ -185,7 +185,7 @@ class Shadowbox(Cog):
         }
         
         # Init
-        def __init__(self, challenger: Member, opponent: Member):
+        def __init__(self, challenger: Member, opponent: Member) -> None:
             """Init"""
             
             # Run super init

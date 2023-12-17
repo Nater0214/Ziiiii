@@ -15,7 +15,7 @@ class Minecraft(Cog):
     """Minecraft commands"""
     
     # Command group
-    command_group = SlashCommandGroup("mc", "Minecraft commands", guild_ids=[getenv("ZIIIII_GUILD_ID")])
+    command_group = SlashCommandGroup("mc", "Minecraft commands", guild_ids=[getenv("HOME_GUILD_ID")])
     
     
     # Commands

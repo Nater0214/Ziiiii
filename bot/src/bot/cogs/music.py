@@ -134,7 +134,7 @@ class Music(Cog):
     
     @command_group.command(guild_only=True)
     async def stop(self, ctx: ApplicationContext, disconnect: Option(bool, description="Wether I should disconnect from the vc") = False):
-        """Stop a playing Kevin Macleod Song"""
+        """Stop a playing song"""
         
         # Do stuff based on voice state
         if ctx.guild.voice_client is None:
