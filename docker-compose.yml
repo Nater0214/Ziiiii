@@ -6,7 +6,7 @@ services:
     build:
       context: bot
     depends_on:
-      - api-nginx
+      - db
   
   db:
     image: postgres:latest
