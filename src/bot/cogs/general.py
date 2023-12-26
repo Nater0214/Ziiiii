@@ -19,7 +19,7 @@ class General(commands.Cog):
     async def hello(self, ctx: ApplicationContext):
         """Send a friendly greeting"""
         
-        await ctx.response.send_message(f"{choice('Hi', 'Hello', 'Hey', 'Howdy', 'Greetings')} {ctx.user.display_name}")
+        await ctx.response.send_message(f"{choice(['Hi', 'Hello', 'Hey', 'Howdy', 'Greetings'])} {ctx.user.display_name}")
     
     
     @commands.slash_command(help="Tells where the bot is (where the command is executed)")
