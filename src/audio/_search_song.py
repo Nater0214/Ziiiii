@@ -8,9 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
 
 
 # Definitions
@@ -23,9 +21,9 @@ class SearchSong:
         
         # Initialize webdriver
         options = Options()
-        options.headless = True
+        options.add_argument("--headless")
         
-        self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
+        self.driver = webdriver.Firefox(options=options)
     
     
     # Call method
