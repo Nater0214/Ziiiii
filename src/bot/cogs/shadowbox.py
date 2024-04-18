@@ -277,7 +277,7 @@ class Shadowbox(Cog):
             elif interaction.user == self.opponent:
                 self.opponent_move = "right"
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
