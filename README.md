@@ -16,7 +16,7 @@ BOT_TOKEN=<the token for your bot>
 HOME_GUILD_ID=<the id of home guild (server) of the bot>
 ```
 After setting up your .env file, you can run the bot using Docker:
-```
+```sh
 docker compose up --build
 ```
 
