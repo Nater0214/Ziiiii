@@ -1,5 +1,4 @@
 naters-utils>=0.2.1
 py-cord[voice]
-python-dotenv
 selenium
 webdriver-manager
