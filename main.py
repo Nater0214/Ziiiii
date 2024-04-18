@@ -6,7 +6,6 @@
 # Imports
 import signal
 
-from dotenv import load_dotenv
 from src import bot
 
 
@@ -15,7 +14,6 @@ def main() -> None:
     """Main function"""
     
     print("Program started")
-    load_dotenv()
     
     bot.run()
 
