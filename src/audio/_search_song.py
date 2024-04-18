@@ -11,6 +11,10 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
 
+# Type definitions
+SearchResponse = tuple[list[str], list[str]]
+
+
 # Definitions
 class SearchSong:
     """Holding stuff"""
@@ -30,7 +34,7 @@ class SearchSong:
     __call__ = MatchCall()
     
     @__call__.case()
-    def kevin(self, query: str) -> tuple[list[str], list[str]]:
+    def kevin(self, query: str) -> SearchResponse:
         # Get the music webpage
         self.driver.get("https://incompetech.com/music/royalty-free/music.html")
         
@@ -64,7 +68,7 @@ class SearchSong:
         return song_names, download_links
     
     @__call__.case()
-    def ncs(self, query: str) -> tuple[list[str], list[str]]:
+    def ncs(self, query: str) -> SearchResponse:
         # Get the music webpage
         self.driver.get(f"https://ncs.io/music-search?q={query}")
         
@@ -86,7 +90,7 @@ class SearchSong:
             return song_names, download_links
     
     @__call__.case()
-    def url(self, query: str) -> tuple[list[str], list[str]]:
+    def url(self, query: str) -> SearchResponse:
         # Get the audio source
         try:
             self.driver.get(query)
