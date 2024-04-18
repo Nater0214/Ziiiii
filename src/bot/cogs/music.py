@@ -79,7 +79,7 @@ class Music(Cog):
             """Play the selected song"""
             
             # Send the status message
-            await interaction.response.edit_message(content=f"Playing {self.song_nums[interaction.custom_id]}", view=None)
+            await interaction.response.edit_message(content=f"Playing *{self.song_nums[interaction.custom_id]}*", view=None)
             
             # Get the audio source
             audio_source = FFmpegPCMAudio(self.download_links[interaction.custom_id], **{'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-n'}, executable=".\\ffmpeg.exe" if os.name == "nt" else "ffmpeg")
@@ -119,9 +119,9 @@ class Music(Cog):
             if len(query_results) > 10:
                 await ctx.followup.send("I found too many")
             elif len(query_results) > 1:
-                await ctx.followup.send("\n".join([f"I found {len(query_results)} songs:", *[f'{num}. {song}' for num, song in enumerate(query_results)]]), view=self.ResultSelectView(query_results, download_links))
+                await ctx.followup.send("\n".join([f"I found {len(query_results)} songs:", *[f'{num}. *{song}*' for num, song in enumerate(query_results)]]), view=self.ResultSelectView(query_results, download_links))
             elif len(query_results) == 1:
-                await ctx.followup.send(f"I found {query_results[0]}", view=self.PlaySongView(query_results[0], download_links[0]))
+                await ctx.followup.send(f"I found *{query_results[0]}*", view=self.PlaySongView(query_results[0], download_links[0]))
             else:
                 await ctx.followup.send("I found nothing :/")
             
