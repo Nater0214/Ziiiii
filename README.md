@@ -13,7 +13,7 @@ Before doing anything, you will need to create a discord bot. You are responsibl
 Next, you will need to create a .env file in the bot directory. It should look like this:
 ```
 BOT_TOKEN=<the token for your bot>
-HOME_GUILD_ID=<the home guild (server) of the bot>
+HOME_GUILD_ID=<the id of home guild (server) of the bot>
 ```
 After setting up your .env file, you can run the bot using Docker:
 ```
