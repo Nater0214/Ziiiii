@@ -3,10 +3,9 @@
 
 
 # Imports
-from os import getenv
 from random import choice
 
-from discord import ApplicationContext, ButtonStyle, Interaction, Member, Option, SlashCommandGroup, ui
+from discord import ApplicationContext, Bot, ButtonStyle, Interaction, Member, Option, SlashCommandGroup, ui
 from discord.ext.commands import Cog
 from naters_utils.iterables import NoneList
 
@@ -25,10 +24,10 @@ class Shadowbox(Cog):
         
         # Emoji map
         emoji_map = {
-            "up": "⬆️",
-            "down": "⬇️",
-            "left": "⬅️",
-            "right": "➡️"
+            0: "⬆️",
+            2: "⬇️",
+            3: "⬅️",
+            1: "➡️"
         }
         
         # Init
@@ -39,10 +38,10 @@ class Shadowbox(Cog):
             super().__init__()
             
             # Add buttons
-            self.up_button = ui.Button(label=self.emoji_map["up"], style=ButtonStyle.gray)
-            self.down_button = ui.Button(label=self.emoji_map["down"], style=ButtonStyle.gray)
-            self.left_button = ui.Button(label=self.emoji_map["left"], style=ButtonStyle.gray)
-            self.right_button = ui.Button(label=self.emoji_map["right"], style=ButtonStyle.gray)
+            self.up_button = ui.Button(label=self.emoji_map[0], style=ButtonStyle.gray)
+            self.down_button = ui.Button(label=self.emoji_map[2], style=ButtonStyle.gray)
+            self.left_button = ui.Button(label=self.emoji_map[3], style=ButtonStyle.gray)
+            self.right_button = ui.Button(label=self.emoji_map[1], style=ButtonStyle.gray)
             
             self.up_button.callback = self.up
             self.down_button.callback = self.down
@@ -73,9 +72,9 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "up"
+                self.challenger_move = 0
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
@@ -86,9 +85,9 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "down"
+                self.challenger_move = 2
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
@@ -99,9 +98,9 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "left"
+                self.challenger_move = 3
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
@@ -112,9 +111,9 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "right"
+                self.challenger_move = 1
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
@@ -125,7 +124,7 @@ class Shadowbox(Cog):
             """Do scoring"""
             
             # Bot makes a move
-            opponent_move = choice([move for move in ["up", "down", "left", "right"] if move not in self.moves])
+            opponent_move = choice([move for move in [0, 2, 3, 1] if move not in self.moves])
             
             # Check if moves are the same
             if self.challenger_move == opponent_move:
@@ -140,13 +139,13 @@ class Shadowbox(Cog):
                 
                 # Disable button
                 match self.challenger_move:
-                    case "up":
+                    case 0:
                         self.up_button.disabled = True
-                    case "down":
+                    case 2:
                         self.down_button.disabled = True
-                    case "left":
+                    case 3:
                         self.left_button.disabled = True
-                    case "right":
+                    case 1:
                         self.right_button.disabled = True
             else:
                 # Set score to 0
@@ -178,10 +177,10 @@ class Shadowbox(Cog):
         
         # Emoji map
         emoji_map = {
-            "up": "⬆️",
-            "down": "⬇️",
-            "left": "⬅️",
-            "right": "➡️"
+            0: "⬆️",
+            2: "⬇️",
+            3: "⬅️",
+            1: "➡️"
         }
         
         # Init
@@ -192,10 +191,10 @@ class Shadowbox(Cog):
             super().__init__()
             
             # Add buttons
-            self.up_button = ui.Button(label=self.emoji_map["up"], style=ButtonStyle.gray)
-            self.down_button = ui.Button(label=self.emoji_map["down"], style=ButtonStyle.gray)
-            self.left_button = ui.Button(label=self.emoji_map["left"], style=ButtonStyle.gray)
-            self.right_button = ui.Button(label=self.emoji_map["right"], style=ButtonStyle.gray)
+            self.up_button = ui.Button(label=self.emoji_map[0], style=ButtonStyle.gray)
+            self.down_button = ui.Button(label=self.emoji_map[2], style=ButtonStyle.gray)
+            self.left_button = ui.Button(label=self.emoji_map[3], style=ButtonStyle.gray)
+            self.right_button = ui.Button(label=self.emoji_map[1], style=ButtonStyle.gray)
             
             self.up_button.callback = self.up
             self.down_button.callback = self.down
@@ -228,41 +227,11 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "up"
+                self.challenger_move = 0
             elif interaction.user == self.opponent:
-                self.opponent_move = "up"
+                self.opponent_move = 0
             else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
-                return
-            
-            await self.scoring(interaction)
-        
-        
-        async def down(self, interaction: Interaction):
-            """User played down"""
-            
-            # Set player move
-            if interaction.user == self.challenger:
-                self.challenger_move = "down"
-            elif interaction.user == self.opponent:
-                self.opponent_move = "down"
-            else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
-                return
-            
-            await self.scoring(interaction)
-        
-        
-        async def left(self, interaction: Interaction):
-            """User played left"""
-            
-            # Set player move
-            if interaction.user == self.challenger:
-                self.challenger_move = "left"
-            elif interaction.user == self.opponent:
-                self.opponent_move = "left"
-            else:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
             
             await self.scoring(interaction)
@@ -273,9 +242,39 @@ class Shadowbox(Cog):
             
             # Set player move
             if interaction.user == self.challenger:
-                self.challenger_move = "right"
+                self.challenger_move = 1
             elif interaction.user == self.opponent:
-                self.opponent_move = "right"
+                self.opponent_move = 1
+            else:
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
+                return
+            
+            await self.scoring(interaction)
+        
+        
+        async def down(self, interaction: Interaction):
+            """User played down"""
+            
+            # Set player move
+            if interaction.user == self.challenger:
+                self.challenger_move = 2
+            elif interaction.user == self.opponent:
+                self.opponent_move = 2
+            else:
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
+                return
+            
+            await self.scoring(interaction)
+        
+        
+        async def left(self, interaction: Interaction):
+            """User played left"""
+            
+            # Set player move
+            if interaction.user == self.challenger:
+                self.challenger_move = 3
+            elif interaction.user == self.opponent:
+                self.opponent_move = 3
             else:
                 await interaction.user.send(f"{interaction.message.jump_url}\n>>>You aren't in this game silly")
                 return
@@ -305,14 +304,14 @@ class Shadowbox(Cog):
                     
                     # Disable button
                     match self.challenger_move:
-                        case "up":
+                        case 0:
                             self.up_button.disabled = True
-                        case "down":
-                            self.down_button.disabled = True
-                        case "left":
-                            self.left_button.disabled = True
-                        case "right":
+                        case 1:
                             self.right_button.disabled = True
+                        case 2:
+                            self.down_button.disabled = True
+                        case 3:
+                            self.left_button.disabled = True
                 else:
                     # Set score to 0
                     self.score = 0
@@ -366,7 +365,7 @@ class Shadowbox(Cog):
             
             # Make sure the button was clicked by the challenged user
             if interaction.user != self.opponent:
-                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You weren't the one challenged goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You weren't the one challenged silly")
                 return
             
             await interaction.response.edit_message(content=f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {self.opponent.mention}💨⬛", view=self.cog.GameView(self.challenger, self.opponent))
@@ -378,22 +377,65 @@ class Shadowbox(Cog):
             
             # Make sure the button was clicked by the challenged user
             if interaction.user != self.opponent:
-                await interaction.user.send(f"{interaction.message.jump_url}\n↘>>>You weren't the one challenged goofy")
+                await interaction.user.send(f"{interaction.message.jump_url}\n↘>>>You weren't the one challenged silly")
                 return
             
             await interaction.response.edit_message(content="Yikes", view=None)
     
     
+    class AcceptAnyoneView(ui.View):
+        
+        
+        # Init
+        def __init__(self, cog: Cog, challenger: Member):
+            """Init"""
+            
+            # Run super init
+            super().__init__()
+            
+            # Set cog
+            self.cog = cog
+            
+            # Set challenger
+            self.challenger = challenger
+        
+        
+        # Buttons
+        @ui.button(label="Accept", style=ButtonStyle.green)
+        async def accept(self, button: ui.Button, interaction: Interaction):
+            """Accept the challenge"""
+            
+            # Make sure the button wasn't clicked by the challenger
+            if interaction.user == self.challenger:
+                await interaction.user.send(f"{interaction.message.jump_url}\n>>>You can't accept your own challenge silly")
+                return
+            
+            await interaction.response.edit_message(content=f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {interaction.user.mention}💨⬛", view=self.cog.GameView(self.challenger, interaction.user))
+    
+    
     # Commands
     @command_group.command()
-    async def challenge(self, ctx: ApplicationContext, user: Option(Member)):
+    async def challenge(self, ctx: ApplicationContext, member: Option(Member, required=False, description="The member to challenge (don't provide to challenge anyone here)")): # type: ignore
         """Challenge someone to a shadowbox game"""
         
-        if ctx.author == user:
-            await ctx.response.send_message("You can't challenge yourself")
-            return
-        
-        if user == ctx.bot.user:
-            await ctx.response.send_message(content=f"⬛🥊{ctx.author.mention} ⬛⬛⬛⏹️⬛⬛⬛ {ctx.bot.user.mention}💨🟨", view=self.SelfGameView(ctx.author, ctx.bot.user))
-        else:
-            await ctx.response.send_message(f"{ctx.author.mention} challenged {user.mention} to a shadowbox game", view=self.AcceptView(self, ctx.author, user))
+        match member:
+            
+            # User challenged themselves
+            case ctx.author:
+                await ctx.response.send_message("You can't challenge yourself")
+            
+            # User challenged the bot
+            case ctx.bot.user:
+                await ctx.response.send_message(content=f"⬛🥊{ctx.author.mention} ⬛⬛⬛⏹️⬛⬛⬛ {ctx.bot.user.mention}💨🟨", view=self.SelfGameView(ctx.author, ctx.bot.user))
+            
+            # User challenged no one
+            case None:
+                await ctx.response.send_message(content=f"{ctx.author.mention} challenged anyone @here to a shadowbox battle\nThe first to accept will be put in the battle", view=self.AcceptAnyoneView(self, ctx.author))
+            
+            # User challenged another member
+            case _:
+                await ctx.response.send_message(f"{ctx.author.mention} challenged {member.mention} to a shadowbox battle", view=self.AcceptView(self, ctx.author, member))
+
+
+def setup(bot: Bot):
+    bot.add_cog(Shadowbox(bot))

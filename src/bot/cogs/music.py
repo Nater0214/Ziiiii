@@ -1,12 +1,13 @@
 # src/bot/cogs/mc.py
-# A cog for Kevin Macleod related commands
+# A cog for music related commands
 
 
 # Imports
 import os
 
-from discord import ApplicationContext, ButtonStyle, FFmpegPCMAudio, HTTPException, Interaction, Option, SlashCommandGroup, ui
+from discord import ApplicationContext, Bot, ButtonStyle, FFmpegPCMAudio, HTTPException, Interaction, Option, SlashCommandGroup, ui
 from discord.ext.commands import Cog
+
 from src import audio
 
 
@@ -90,7 +91,7 @@ class Music(Cog):
     
     # Commands
     @command_group.command(guild_only=True)
-    async def search(self, ctx: ApplicationContext, source: Option(str, choices=["kevin", "ncs", "url"], description="The source of the song"), query: Option(str, description="The query used to find the song")):
+    async def search(self, ctx: ApplicationContext, source: Option(str, choices=["kevin", "ncs", "url"], description="The source of the song"), query: Option(str, description="The query used to find the song")): # type: ignore
         """Play a song from a source by a query"""
         
         try:
@@ -133,7 +134,7 @@ class Music(Cog):
     
     
     @command_group.command(guild_only=True)
-    async def stop(self, ctx: ApplicationContext, disconnect: Option(bool, description="Wether I should disconnect from the vc") = False):
+    async def stop(self, ctx: ApplicationContext, disconnect: Option(bool, description="Wether I should disconnect from the vc") = False): # type: ignore
         """Stop a playing song"""
         
         # Do stuff based on voice state
@@ -152,3 +153,7 @@ class Music(Cog):
             elif disconnect:
                 await ctx.guild.voice_client.disconnect()
                 await ctx.response.send_message("Bye")
+
+
+def setup(bot: Bot):
+    bot.add_cog(Music(bot))

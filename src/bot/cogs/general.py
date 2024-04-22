@@ -6,7 +6,7 @@
 from os import getenv
 from random import choice
 
-from discord import ApplicationContext
+from discord import ApplicationContext, Bot
 from discord.ext import commands
 
 
@@ -33,3 +33,7 @@ class General(commands.Cog):
                 await ctx.response.send_message(f"I am in a server named {ctx.guild.name} in the {ctx.channel.name} channel.")
         else:
             await ctx.response.send_message("I am in a DM channel.")
+
+
+def setup(bot: Bot):
+    bot.add_cog(General(bot))

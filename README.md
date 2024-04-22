@@ -14,6 +14,11 @@ Next, you will need to create a .env file in the bot directory. It should look l
 ```
 BOT_TOKEN=<the token for your bot>
 HOME_GUILD_ID=<the id of home guild (server) of the bot>
+ENABLED_MODULES=<comma-separated list of enabled modules>
+# CraftyController stuff only required if using mc module
+CRAFTYCONTROLLER_URL=<url of craftycontroller for mc module>
+CRAFTYCONTROLLER_API_TOKEN=<craftycontroller api token with superuser perms>
+CRAFTYCONTROLLER_ROLE_ID=<id of craftycontroller role for servers to use>
 ```
 After setting up your .env file, you can run the bot using Docker:
 ```sh

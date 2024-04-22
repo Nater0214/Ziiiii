@@ -31,8 +31,10 @@ def run() -> None:
                 if before.channel.members is None:
                     await member.guild.voice_client.disconnect()
     
-    # Add cogs
-    bot.load_extension("src.bot.cogs")
+    # Load modules
+    for module in environ.get("ENABLED_MODULES", '').split(','):
+        bot.load_extension(f"src.bot.cogs.{module}")
+        print(f"Loaded module {module}")
     
     # Run the bot
     print("Starting the bot")

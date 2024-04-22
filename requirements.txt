@@ -1,3 +1,4 @@
+aiohttp
 naters-utils>=0.2.1
 py-cord[voice]
 selenium
