@@ -51,10 +51,10 @@ class Purge(Cog):
         
         # Loop through messages and delete
         async for message in ctx.channel.history():
+            await message.delete()
+            
             if message == first_message:
                 break
-            
-            await message.delete()
 
 
 def setup(bot: Bot):
