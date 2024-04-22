@@ -1,2 +1,6 @@
 **__pycache__
 .env
+.python-version
+LICENSE.md
+README.md
+ruff.toml
