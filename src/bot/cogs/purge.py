@@ -1,5 +1,5 @@
-# src/bot/cogs/mc.py
-# A cog for music related commands
+# src/bot/cogs/purge.py
+# A cog for message purging commands
 
 
 # Imports
@@ -14,6 +14,7 @@ class Purge(Cog):
     # Permissions
     permissions = Permissions()
     permissions.manage_messages = True
+    
     
     # Command group
     command_group = SlashCommandGroup("purge", "Commands for purging messages and channels", guild_only=True, default_member_permissions=permissions)
@@ -33,7 +34,7 @@ class Purge(Cog):
     
     
     @command_group.command()
-    async def after(self, ctx: ApplicationContext, message_id: Option(str, required=True, description="The id of the first message to purge")):
+    async def after(self, ctx: ApplicationContext, message_id: Option(str, required=True, description="The id of the first message to purge")): # type: ignore
         """Purge all messages after a specific message"""
         
         # Check if message exists in this channel

@@ -45,7 +45,7 @@ class Music(Cog):
             """Play the song"""
             
             # Send the status message
-            await interaction.response.edit_message(f"Playing {self.song_name}", view=None)
+            await interaction.response.edit_message(content=f"Playing {self.song_name}", view=None)
             
             # Get the audio source
             audio_source = FFmpegPCMAudio(self.download_link, **{'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-n'}, executable=".\\ffmpeg.exe" if os.name == "nt" else "ffmpeg")
@@ -80,7 +80,7 @@ class Music(Cog):
             """Play the selected song"""
             
             # Send the status message
-            await interaction.response.edit_message(f"Playing *{self.song_nums[interaction.custom_id]}*", view=None)
+            await interaction.response.edit_message(content=f"Playing *{self.song_nums[interaction.custom_id]}*", view=None)
             
             # Get the audio source
             audio_source = FFmpegPCMAudio(self.download_links[interaction.custom_id], **{'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5','options': '-n'}, executable=".\\ffmpeg.exe" if os.name == "nt" else "ffmpeg")
@@ -100,7 +100,7 @@ class Music(Cog):
                 if ctx.user.voice is not None:
                     await ctx.user.voice.channel.connect()
                 else:
-                    await ctx.response.send_message("You aren't in a VC dumbass")
+                    await ctx.response.send_message("You aren't in a VC silly")
                     return
             else:
                 if ctx.guild.voice_client.is_playing():

@@ -170,7 +170,7 @@ class Shadowbox(Cog):
             self.challenger_move = None
             opponent_move = None
             
-            await interaction.response.edit_message(f"{'⬛' if self.challenger_move is None else '🟨'}{'🥊' if self.boxing == self.challenger else '💨'}{self.challenger.mention} {self.emoji_map[self.moves[2]] if self.score <= -3 else '⬛'}{self.emoji_map[self.moves[1]] if self.score <= -2 else '⬛'}{self.emoji_map[self.moves[0]] if self.score <= -1 else '⬛'}⏹️{self.emoji_map[self.moves[0]] if self.score >= 1 else '⬛'}{self.emoji_map[self.moves[1]] if self.score >= 2 else '⬛'}{self.emoji_map[self.moves[2]] if self.score >= 3 else '⬛'} {self.opponent.mention}{'🥊' if self.boxing == self.opponent else '💨'}🟨", view=self if self.score not in [-3, 3] else None)
+            await interaction.response.edit_message(content=f"{'⬛' if self.challenger_move is None else '🟨'}{'🥊' if self.boxing == self.challenger else '💨'}{self.challenger.mention} {self.emoji_map[self.moves[2]] if self.score <= -3 else '⬛'}{self.emoji_map[self.moves[1]] if self.score <= -2 else '⬛'}{self.emoji_map[self.moves[0]] if self.score <= -1 else '⬛'}⏹️{self.emoji_map[self.moves[0]] if self.score >= 1 else '⬛'}{self.emoji_map[self.moves[1]] if self.score >= 2 else '⬛'}{self.emoji_map[self.moves[2]] if self.score >= 3 else '⬛'} {self.opponent.mention}{'🥊' if self.boxing == self.opponent else '💨'}🟨", view=self if self.score not in [-3, 3] else None)
     
     class GameView(ui.View):
         """View for starting a shadowbox game"""
@@ -335,7 +335,7 @@ class Shadowbox(Cog):
                 self.challenger_move = None
                 self.opponent_move = None
             
-            await interaction.response.edit_message(f"{'⬛' if self.challenger_move is None else '🟨'}{'🥊' if self.boxing == self.challenger else '💨'}{self.challenger.mention} {self.emoji_map[self.moves[2]] if self.score <= -3 else '⬛'}{self.emoji_map[self.moves[1]] if self.score <= -2 else '⬛'}{self.emoji_map[self.moves[0]] if self.score <= -1 else '⬛'}⏹{self.emoji_map[self.moves[0]] if self.score >= 1 else '⬛'}{self.emoji_map[self.moves[1]] if self.score >= 2 else '⬛'}{self.emoji_map[self.moves[2]] if self.score >= 3 else '⬛'} {self.opponent.mention}{'🥊' if self.boxing == self.opponent else '💨'}{'⬛' if self.opponent_move is None else '🟨'}", view=self if self.score not in [-3, 3] else None)
+            await interaction.response.edit_message(content=f"{'⬛' if self.challenger_move is None else '🟨'}{'🥊' if self.boxing == self.challenger else '💨'}{self.challenger.mention} {self.emoji_map[self.moves[2]] if self.score <= -3 else '⬛'}{self.emoji_map[self.moves[1]] if self.score <= -2 else '⬛'}{self.emoji_map[self.moves[0]] if self.score <= -1 else '⬛'}⏹{self.emoji_map[self.moves[0]] if self.score >= 1 else '⬛'}{self.emoji_map[self.moves[1]] if self.score >= 2 else '⬛'}{self.emoji_map[self.moves[2]] if self.score >= 3 else '⬛'} {self.opponent.mention}{'🥊' if self.boxing == self.opponent else '💨'}{'⬛' if self.opponent_move is None else '🟨'}", view=self if self.score not in [-3, 3] else None)
     
     
     class AcceptView(ui.View):
@@ -368,7 +368,7 @@ class Shadowbox(Cog):
                 await interaction.user.send(f"{interaction.message.jump_url}\n>>>You weren't the one challenged silly")
                 return
             
-            await interaction.response.edit_message(f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {self.opponent.mention}💨⬛", view=self.cog.GameView(self.challenger, self.opponent))
+            await interaction.response.edit_message(content=f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {self.opponent.mention}💨⬛", view=self.cog.GameView(self.challenger, self.opponent))
         
         
         @ui.button(label="Decline", style=ButtonStyle.red)
@@ -380,7 +380,7 @@ class Shadowbox(Cog):
                 await interaction.user.send(f"{interaction.message.jump_url}\n↘>>>You weren't the one challenged silly")
                 return
             
-            await interaction.response.edit_message("Yikes", view=None)
+            await interaction.response.edit_message(content="Yikes", view=None)
     
     
     class AcceptAnyoneView(ui.View):
@@ -410,7 +410,7 @@ class Shadowbox(Cog):
                 await interaction.user.send(f"{interaction.message.jump_url}\n>>>You can't accept your own challenge silly")
                 return
             
-            await interaction.response.edit_message(f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {interaction.user.mention}💨⬛", view=self.cog.GameView(self.challenger, interaction.user))
+            await interaction.response.edit_message(content=f"⬛🥊{self.challenger.mention} ⬛⬛⬛⏹️⬛⬛⬛ {interaction.user.mention}💨⬛", view=self.cog.GameView(self.challenger, interaction.user))
     
     
     # Commands
