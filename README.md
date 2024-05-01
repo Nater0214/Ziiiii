@@ -46,7 +46,7 @@ Usage terms
 #### Licensing:
 - Adhere to the GNU GPL v3.0 (Included in this repository). This means:
   - Your codebase **must** be open-source, easily accessible, and readily available to all of your bot's users and anyone else who may wish to view it. I recommend you provide a link to the codebase in the bot's description.
-  - Your codebase **must** also use the GNU GPL v3.0 license.
+  - Your codebase **must** also use and include the GNU GPL v3.0 license.
 #### Terms modification:
 - You **must** include these terms in your codebase.
 - You may extend these terms without modifying existing terms.
