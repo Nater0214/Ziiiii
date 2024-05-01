@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   bot:
     image: docker.nater0214.com/ziiiii-bot:latest
@@ -8,6 +6,14 @@ services:
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
       - HOME_GUILD_ID=${HOME_GUILD_ID}
+      - ENABLED_MODULES=${ENABLED_MODULES}
+      - CRAFTYCONTROLLER_URL=${CRAFTYCONTROLLER_URL}
+      - CRAFTYCONTROLLER_API_TOKEN=${CRAFTYCONTROLLER_API_TOKEN}
     env_file:
       - path: ./.env
         required: true
+    ports:
+      - "5678:5678"
+    command:
+      - sh
+      - ./debug.sh
