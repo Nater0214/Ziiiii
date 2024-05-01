@@ -1,5 +1,5 @@
 # Setup
-FROM python:3.12.0
+FROM python:3.12.3
 WORKDIR /bot
 
 # Install firefox and ffmpeg
