@@ -1,6 +1,6 @@
-# src/audio/craftycontroller/__init__.py
+# src/craftycontroller/__init__.py
 # For importing purposes
 
 
 # Imports
-from . import api
+from . import api  # noqa: F401
