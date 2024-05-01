@@ -1,10 +1,9 @@
-# src/audio/craftycontroller/api.py
+# src/craftycontroller/api.py
 # The api functions
 
 
 # Imports
 from os import getenv
-from typing import AsyncIterator
 
 import aiohttp
 
