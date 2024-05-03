@@ -1,6 +1,6 @@
 # main.py
 # Ziiiii Bot
-# Does random stuff in the Ziiiii Server
+# A cool discord bot
 
 
 # Imports
