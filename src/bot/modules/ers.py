@@ -1,4 +1,4 @@
-# src/bot/cogs/ers.py
+# src/bot/modules/ers.py
 # ERS commands
 
 

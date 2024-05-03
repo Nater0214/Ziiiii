@@ -1,9 +1,9 @@
-# src/bot/cogs/general.py
+# src/bot/modules/general.py
 # General commands
 
 
 # Imports
-from os import getenv
+from os import environ
 from random import choice
 
 from discord import ApplicationContext, Bot
@@ -27,7 +27,7 @@ class General(commands.Cog):
         """Respond where the bot currently is"""
 
         if ctx.guild is not None:
-            if ctx.guild.id == int(getenv("HOME_GUILD_ID")):
+            if ctx.guild.id == int(environ.get("HOME_GUILD_ID")):
                 await ctx.response.send_message(f"I am at home in the {ctx.channel.name} channel.")
             else:
                 await ctx.response.send_message(f"I am in a server named {ctx.guild.name} in the {ctx.channel.name} channel.")

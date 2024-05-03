@@ -1,4 +1,4 @@
-# src/bot/cogs/purge.py
+# src/bot/modules/purge.py
 # A cog for message purging commands
 
 

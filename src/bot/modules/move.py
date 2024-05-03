@@ -1,4 +1,4 @@
-# src/bot/cogs/move.py
+# src/bot/modules/move.py
 # A cog for vc moving related commands
 
 

@@ -1,4 +1,4 @@
-# src/bot/cogs/shadowbox.py
+# src/bot/modules/shadowbox.py
 # A cog for shadowboxing
 
 

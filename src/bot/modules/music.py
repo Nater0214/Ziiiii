@@ -1,4 +1,4 @@
-# src/bot/cogs/mc.py
+# src/bot/modules/mc.py
 # A cog for music related commands
 
 
