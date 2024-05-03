@@ -33,7 +33,7 @@ def run() -> None:
 
     # Load modules
     for module in environ.get("ENABLED_MODULES", '').split(','):
-        bot.load_extension(f"src.bot.cogs.{module}")
+        bot.load_extension(f"src.bot.modules.{module}")
         print(f"Loaded module {module}")
 
     # Run the bot
