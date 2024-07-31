@@ -518,7 +518,7 @@ class Shadowbox(Cog):
 
 
         # Buttons
-        @ui.button(label="Join", style=ButtonStyle.green)
+        @ui.button(label="Join", style=ButtonStyle.blurple)
         async def join(self, button: ui.Button, interaction: Interaction):
             """Join the tournament"""
 
