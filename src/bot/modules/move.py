@@ -3,7 +3,7 @@
 
 
 # Imports
-from discord import ApplicationContext, Bot, ChannelType, Option, Permissions, SlashCommandGroup, VoiceChannel
+from discord import ApplicationContext, Bot, ChannelType, InteractionContextType, Option, Permissions, SlashCommandGroup, VoiceChannel
 from discord.ext.commands import Cog
 
 
@@ -17,7 +17,7 @@ class Move(Cog):
 
 
     # Command groups
-    command_group = SlashCommandGroup("move", "Commands for moving members in voice channels", guild_only=True, default_member_permissions=permissions)
+    command_group = SlashCommandGroup("move", "Commands for moving members in voice channels", contexts={InteractionContextType.guild}, default_member_permissions=permissions)
     command_group_all = command_group.create_subgroup("all", "Move all members in a channel")
 
 

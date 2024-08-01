@@ -3,7 +3,7 @@
 
 
 # Imports
-from discord import ApplicationContext, Bot, NotFound, Option, Permissions, SlashCommandGroup
+from discord import ApplicationContext, Bot, InteractionContextType, NotFound, Option, Permissions, SlashCommandGroup
 from discord.ext.commands import Cog
 
 
@@ -17,7 +17,7 @@ class Purge(Cog):
 
 
     # Command group
-    command_group = SlashCommandGroup("purge", "Commands for purging messages and channels", guild_only=True, default_member_permissions=permissions)
+    command_group = SlashCommandGroup("purge", "Commands for purging messages and channels", contexts={InteractionContextType.private_channel, InteractionContextType.guild}, default_member_permissions=permissions)
 
 
     # Commands
