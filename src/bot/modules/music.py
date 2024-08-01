@@ -90,7 +90,7 @@ class Music(Cog):
 
 
     # Commands
-    @command_group.command(guild_only=True)
+    @command_group.command()
     async def search(self, ctx: ApplicationContext, source: Option(str, choices=["kevin", "ncs", "url"], description="The source of the song"), query: Option(str, description="The query used to find the song")): # type: ignore
         """Play a song from a source by a query"""
 
@@ -133,7 +133,7 @@ class Music(Cog):
                 pass
 
 
-    @command_group.command(guild_only=True)
+    @command_group.command()
     async def stop(self, ctx: ApplicationContext, disconnect: Option(bool, description="Wether I should disconnect from the vc") = False): # type: ignore
         """Stop a playing song"""
 
