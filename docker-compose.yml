@@ -7,8 +7,6 @@ services:
       - BOT_TOKEN=${BOT_TOKEN}
       - HOME_GUILD_ID=${HOME_GUILD_ID}
       - ENABLED_MODULES=${ENABLED_MODULES}
-      - CRAFTYCONTROLLER_URL=${CRAFTYCONTROLLER_URL}
-      - CRAFTYCONTROLLER_API_TOKEN=${CRAFTYCONTROLLER_API_TOKEN}
     env_file:
       - path: ./.env
         required: true

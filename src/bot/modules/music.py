@@ -5,7 +5,7 @@
 # Imports
 import os
 
-from discord import ApplicationContext, Bot, ButtonStyle, FFmpegPCMAudio, HTTPException, Interaction, Option, SlashCommandGroup, ui
+from discord import ApplicationContext, Bot, ButtonStyle, FFmpegPCMAudio, HTTPException, Interaction, InteractionContextType, Option, SlashCommandGroup, ui
 from discord.ext.commands import Cog
 
 from src import audio
@@ -16,7 +16,7 @@ class Music(Cog):
     """Music commands"""
 
     # Command group
-    command_group = SlashCommandGroup("music", "Music commands", guild_only=True)
+    command_group = SlashCommandGroup("music", "Music commands", contexts={InteractionContextType.guild})
 
 
     # Views

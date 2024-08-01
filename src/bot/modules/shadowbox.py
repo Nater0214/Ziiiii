@@ -18,7 +18,7 @@ class Shadowbox(Cog):
     """Shadowbox commands"""
 
     # Command group
-    command_group = SlashCommandGroup("shadowbox", "Commands for shadowboxing", guild_only=True)
+    command_group = SlashCommandGroup("shadowbox", "Commands for shadowboxing", contexts={InteractionContextType.private_channel, InteractionContextType.guild})
 
 
     # Views
@@ -518,7 +518,7 @@ class Shadowbox(Cog):
 
 
         # Buttons
-        @ui.button(label="Join", style=ButtonStyle.green)
+        @ui.button(label="Join", style=ButtonStyle.blurple)
         async def join(self, button: ui.Button, interaction: Interaction):
             """Join the tournament"""
 
