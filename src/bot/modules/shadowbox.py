@@ -8,7 +8,7 @@ import math
 from random import choice, shuffle
 
 import anytree
-from discord import ApplicationContext, Bot, ButtonStyle, Interaction, Member, Option, SlashCommandGroup, TextChannel, ui
+from discord import ApplicationContext, Bot, ButtonStyle, Interaction, InteractionContextType, Member, Option, SlashCommandGroup, TextChannel, ui
 from discord.ext.commands import Cog
 from naters_utils.iterables import NoneList
 
